@@ -1,38 +1,20 @@
-/**
-  ******************************************************************************
-  * @file    MyHMC5883L.h
-  * @author  Your Name
-  * @version V1.0
-  * @brief   
-  ******************************************************************************
-  */
-
-#ifndef __HMC5883L_H
-#define __HMC5883L_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+#ifndef MY_HMC5883L_H
+#define MY_HMC5883L_H
 
 #include "stm32f4xx.h"
-#include "MyI2C.h"
-#include "MPU6050.h"
 
-/*
-void HMC5883L_WriteReg(uint8_t RegAddress, uint8_t Data);
+#define HMC5883L_I2C_ADDR_WRITE   0x3C
+#define HMC5883L_I2C_ADDR_READ    0x3D
 
-uint8_t HMC5883L_ReadReg(uint8_t RegAddress);
+#define HMC5883L_REG_CONFIG_A     0x00
+#define HMC5883L_REG_CONFIG_B     0x01
+#define HMC5883L_REG_MODE         0x02
+#define HMC5883L_REG_DATA_X_MSB   0x03
+#define HMC5883L_REG_ID_A         0x0A
+#define HMC5883L_REG_ID_B         0x0B
+#define HMC5883L_REG_ID_C         0x0C
 
-void HMC5883L_Init(void);
+int HMC5883L_Init(void);
+void HMC5883L_GetData(int16_t *mag_x, int16_t *mag_y, int16_t *mag_z);
 
-uint8_t HMC5883L_GetID(void);
-
-void HMC5883L_GetData(int16_t *GauX, int16_t *GauY, int16_t *GauZ);
-*/
-
-
-#ifdef __cplusplus
-}
 #endif
-
-#endif /* __DELAY_H */
