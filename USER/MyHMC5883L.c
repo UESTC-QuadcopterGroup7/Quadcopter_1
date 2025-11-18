@@ -1,67 +1,69 @@
 #include "MyHMC5883L.h"
 #include "MyI2C.h"
-#define HMC5883L_ADDR	0x3C
+#include "MyMPU6050.h"
 
-/*
-void HMC5883L_WriteReg(uint8_t RegAddress, uint8_t Data)
+static void HMC5883L_WriteReg(uint8_t reg_address, uint8_t data)
 {
-	MyI2C_Start();
-	MyI2C_SendByte(HMC5883L_ADDR);
-	MyI2C_ReceiveAck();
-	MyI2C_SendByte(RegAddress);
-	MyI2C_ReceiveAck();
-	MyI2C_SendByte(Data);
-	MyI2C_ReceiveAck();
-	MyI2C_Stop();
+    MyI2C_Start();
+    MyI2C_SendByte(HMC5883L_I2C_ADDR_WRITE);
+    MyI2C_ReceiveAck();
+    MyI2C_SendByte(reg_address);
+    MyI2C_ReceiveAck();
+    MyI2C_SendByte(data);
+    MyI2C_ReceiveAck();
+    MyI2C_Stop();
 }
 
-uint8_t HMC5883L_ReadReg(uint8_t RegAddress)
+static uint8_t HMC5883L_ReadReg(uint8_t reg_address)
 {
-	uint8_t Data;
-	
-	MyI2C_Start();
-	MyI2C_SendByte(HMC5883L_ADDR);
-	MyI2C_ReceiveAck();
-	MyI2C_SendByte(RegAddress);
-	MyI2C_ReceiveAck();
-	
-	MyI2C_Start();
-	MyI2C_SendByte(HMC5883L_ADDR | 0x01);
-	MyI2C_ReceiveAck();
-	Data = MyI2C_ReceiveByte();
-	MyI2C_SendAck(1);
-	MyI2C_Stop();
-	
-	return Data;
+    uint8_t data;
+
+    MyI2C_Start();
+    MyI2C_SendByte(HMC5883L_I2C_ADDR_WRITE);
+    MyI2C_ReceiveAck();
+    MyI2C_SendByte(reg_address);
+    MyI2C_ReceiveAck();
+
+    MyI2C_Start();
+    MyI2C_SendByte(HMC5883L_I2C_ADDR_READ);
+    MyI2C_ReceiveAck();
+    data = MyI2C_ReceiveByte();
+    MyI2C_SendAck(1);
+    MyI2C_Stop();
+
+    return data;
 }
 
-void HMC5883L_Init(void)
+int HMC5883L_Init(void)
 {
-	MyI2C_Init();
-	HMC5883L_WriteReg(HMC5883L_REG_CONFIGA, 0x70);
-	HMC5883L_WriteReg(HMC5883L_REG_CONFIGB, 0x20);
-	HMC5883L_WriteReg(HMC5883L_REG_MODE, 0x00);
+    MPU6050_EnableBypass();
+
+    HMC5883L_WriteReg(HMC5883L_REG_CONFIG_A, 0x78);
+    HMC5883L_WriteReg(HMC5883L_REG_CONFIG_B, 0xA0);
+    HMC5883L_WriteReg(HMC5883L_REG_MODE, 0x00);
+
+    if (HMC5883L_ReadReg(HMC5883L_REG_ID_A) != 'H' ||
+        HMC5883L_ReadReg(HMC5883L_REG_ID_B) != '4' ||
+        HMC5883L_ReadReg(HMC5883L_REG_ID_C) != '3') {
+        MPU6050_DisableBypass();
+        return -1;
+    }
+
+    MPU6050_DisableBypass();
+    return 0;
 }
 
-uint8_t HMC5883L_GetID(void)
+void HMC5883L_GetData(int16_t *mag_x, int16_t *mag_y, int16_t *mag_z)
 {
-	return HMC5883L_ReadReg(HMC5883L_REG_IDA);
-}
+    uint8_t buffer[6];
 
-void HMC5883L_GetData(int16_t *GauX, int16_t *GauY, int16_t *GauZ)
-{
-	uint8_t DataH, DataL;
-	
-	DataH = HMC5883L_ReadReg(HMC5883L_REG_X_MSB);
-	DataL = HMC5883L_ReadReg(HMC5883L_REG_X_LSB);
-	*GauX = (DataH << 8) | DataL;
-	
-	DataH = HMC5883L_ReadReg(HMC5883L_REG_Y_MSB);
-	DataL = HMC5883L_ReadReg(HMC5883L_REG_Y_LSB);
-	*GauY = (DataH << 8) | DataL;
-	
-	DataH = HMC5883L_ReadReg(HMC5883L_REG_Z_MSB);
-	DataL = HMC5883L_ReadReg(HMC5883L_REG_Z_LSB);
-	*GauZ = (DataH << 8) | DataL;
+    MPU6050_EnableBypass();
+    for (uint8_t i = 0; i < 6; i++) {
+        buffer[i] = HMC5883L_ReadReg(HMC5883L_REG_DATA_X_MSB + i);
+    }
+    MPU6050_DisableBypass();
+
+    if (mag_x) { *mag_x = (buffer[0] << 8) | buffer[1]; }
+    if (mag_z) { *mag_z = (buffer[2] << 8) | buffer[3]; }
+    if (mag_y) { *mag_y = (buffer[4] << 8) | buffer[5]; }
 }
-*/
