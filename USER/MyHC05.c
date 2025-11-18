@@ -1,4 +1,4 @@
-#include "stm32f4xx.h"
+#include "MyHC05.h"
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_usart.h"
@@ -6,28 +6,29 @@
 #include "string.h"
 
 // 函数声明
-void RCC_Configuration(void);
-void GPIO_Configuration(void);
-void USART2_Configuration(uint32_t baudrate);
-void NVIC_Configuration(void);
-void USART2_SendString(char *str);
-void USART2_SendByte(uint8_t data);
+static void RCC_Configuration(void);
+static void GPIO_Configuration(void);
+static void USART2_Configuration(uint32_t baudrate);
+static void NVIC_Configuration(void);
 void Delay(__IO uint32_t nCount);
-void HC05_ChangeBaudRate(uint32_t baudrate);
-void HC05_SimpleInit(void);
 
 // 全局变量
-volatile uint8_t USART2_RxBuffer[100];
+volatile uint8_t USART2_RxBuffer[HC05_RX_BUFFER_SIZE];
 volatile uint8_t USART2_RxIndex = 0;
 volatile uint8_t USART2_RxFlag = 0;
+
+void HC05_InitHardware(uint32_t baudrate)
+{
+    RCC_Configuration();
+    GPIO_Configuration();
+    USART2_Configuration(baudrate);
+    NVIC_Configuration();
+}
 
 int main(void)
 {
     // 系统初始化
-    RCC_Configuration();
-    GPIO_Configuration();
-    USART2_Configuration(9600);  // 初始波特率9600
-    NVIC_Configuration();
+    HC05_InitHardware(HC05_DEFAULT_BAUDRATE);
     
     USART2_SendString("STM32 HC-05 Bluetooth Test\r\n");
     USART2_SendString("Initializing HC-05...\r\n");
@@ -165,7 +166,7 @@ void HC05_SimpleInit(void)
 }
 
 // 系统时钟配置
-void RCC_Configuration(void)
+static void RCC_Configuration(void)
 {
     // 使能GPIOA时钟
     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
@@ -174,7 +175,7 @@ void RCC_Configuration(void)
 }
 
 // GPIO配置
-void GPIO_Configuration(void)
+static void GPIO_Configuration(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
     
@@ -209,7 +210,7 @@ void GPIO_Configuration(void)
 }
 
 // USART2配置
-void USART2_Configuration(uint32_t baudrate)
+static void USART2_Configuration(uint32_t baudrate)
 {
     USART_InitTypeDef USART_InitStructure;
     
@@ -230,7 +231,7 @@ void USART2_Configuration(uint32_t baudrate)
 }
 
 // NVIC配置
-void NVIC_Configuration(void)
+static void NVIC_Configuration(void)
 {
     NVIC_InitTypeDef NVIC_InitStructure;
     
