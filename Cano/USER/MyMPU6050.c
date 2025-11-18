@@ -1,6 +1,6 @@
 #include "MyMPU6050.h"
 
-void MPU6050_WriteReg(uint8_t RegAddress, uint8_t Data)
+static void MPU6050_WriteReg(uint8_t RegAddress, uint8_t Data)
 {
 	MyI2C_Start();
 	MyI2C_SendByte(MPU6050_ADDRESS);
@@ -12,7 +12,7 @@ void MPU6050_WriteReg(uint8_t RegAddress, uint8_t Data)
 	MyI2C_Stop();
 }
 
-uint8_t MPU6050_ReadReg(uint8_t RegAddress)
+static uint8_t MPU6050_ReadReg(uint8_t RegAddress)
 {
 	uint8_t Data;
 	
@@ -35,8 +35,7 @@ uint8_t MPU6050_ReadReg(uint8_t RegAddress)
 int MPU6050_Init(void)
 {
     uint8_t device_id = 0;
-	MyI2C_Init();
-	device_id = MPU6050_ReadReg(MPU6050_WHO_AM_I);
+device_id = MPU6050_ReadReg(MPU6050_WHO_AM_I);
 	if (device_id != 0x68) {
         return -1; // 设备ID不匹配，初始化失败
     }
