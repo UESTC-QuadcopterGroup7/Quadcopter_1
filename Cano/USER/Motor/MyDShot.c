@@ -1,4 +1,5 @@
 #include "MyDShot.h"
+#include "MyDShot_DMA.h"
 
 /* ============================================================
    内部缓冲：每一路 17 个计数值（16位数据 + 结尾 0）
@@ -36,8 +37,8 @@ static void DShot_GPIO_Init(void)
 
 /* ============================================================
    定时器初始化
-   TIM1：CH1/CH2/CH3  
-   TIM3：CH3  
+   TIM1：CH1/CH2/CH3
+   TIM3：CH3
    频率：600kHz（ARR=139）
    PWM：每 bit 使用 PWM1 模式改变 CCRx
    ============================================================ */
@@ -112,37 +113,13 @@ static void DShot_FillBuffer(uint16_t *buf, uint16_t value)
 }
 
 /* ============================================================
-   单路电机发送（阻塞方式）
+   单路电机发送（DMA 方式）
    ============================================================ */
 void DShot_Send(DShot_Motor_t motor, uint16_t value)
 {
     /* 生成脉宽数组 */
     DShot_FillBuffer(dshotBuf[motor], value);
-
-    volatile uint16_t *ccr;
-
-    switch (motor) {
-        case DSHOT_M1: ccr = &TIM1->CCR1; break;
-        case DSHOT_M2: ccr = &TIM1->CCR2; break;
-        case DSHOT_M3: ccr = &TIM1->CCR3; break;
-        case DSHOT_M4: ccr = &TIM3->CCR3; break;
-        default: return;
-    }
-
-    /* 用最简单的阻塞写法依次发送 17 个 PWM 脉宽 */
-    for (int i = 0; i < DSHOT_FRAME_LEN; i++)
-    {
-        *ccr = dshotBuf[motor][i];
-        while (!(motor == DSHOT_M4 ? (TIM3->SR & TIM_SR_UIF)
-                                   : (TIM1->SR & TIM_SR_UIF)))
-            ;   // 等待下一个 PWM 周期
-
-        /* 清 UIF */
-        if (motor == DSHOT_M4) TIM3->SR &= ~TIM_SR_UIF;
-        else                   TIM1->SR &= ~TIM_SR_UIF;
-    }
-
-    *ccr = 0; // 结束后置为 0
+    DShot_DMA_Transmit(motor, dshotBuf[motor], DSHOT_FRAME_LEN);
 }
 
 /* ============================================================
@@ -164,4 +141,5 @@ void DShot_Init_All(void)
 {
     DShot_GPIO_Init();
     DShot_TIM_Init();
+    DShot_DMA_Init();
 }
