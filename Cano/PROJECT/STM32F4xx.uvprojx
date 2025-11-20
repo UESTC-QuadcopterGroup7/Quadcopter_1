@@ -784,6 +784,16 @@
               <FileType>5</FileType>
               <FilePath>..\USER\MyUSART.h</FilePath>
             </File>
+            <File>
+              <FileName>MySBUS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\MySBUS.c</FilePath>
+            </File>
+            <File>
+              <FileName>MySBUS.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\MySBUS.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
