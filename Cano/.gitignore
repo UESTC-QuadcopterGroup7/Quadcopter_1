@@ -1,0 +1,14 @@
+OUTPUT/
+*.o
+*.crf
+*.d
+*.axf
+*.htm
+*.map
+*.lnp
+*.log
+*.uvguix.*
+*.uvoptx
+*.dep
+*.sct
+*.lst
