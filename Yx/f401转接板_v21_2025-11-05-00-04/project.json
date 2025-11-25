@@ -1,0 +1,364 @@
+{
+  "schematics": {
+    "d6bb1abd73b84629b95d4f8a5221eb13": {
+      "name": "Schematic1",
+      "sheets": [
+        {
+          "name": "P1",
+          "id": 1,
+          "uuid": "89eff81c78a4491f879d16d53eb40c81"
+        }
+      ]
+    }
+  },
+  "pcbs": {
+    "75f54b3064d04136a00632928453322e": "PCB1"
+  },
+  "panels": {},
+  "symbols": {
+    "a55928edb27f4001924aea767dc7fc1d": {
+      "source": "dae013dc9fb24993ad62a51f9f80d9cd|0819f05c4eef4c71ace90d822a990e87",
+      "desc": "",
+      "tags": {
+        "parent_tag": [],
+        "child_tag": []
+      },
+      "custom_tags": "[\"特殊器件\"]",
+      "title": "Drawing-Symbol_A4",
+      "version": "1734002032",
+      "type": 20
+    },
+    "c0943961fe8a42d280d709248b74ba62": {
+      "source": "953ce27293054976985574107dac10bf|0819f05c4eef4c71ace90d822a990e87",
+      "desc": "",
+      "tags": {
+        "parent_tag": [],
+        "child_tag": []
+      },
+      "custom_tags": "[\"连接器\",\"线对板针座\"]",
+      "title": "PHB-2*19AW",
+      "version": "1733305821",
+      "type": 2
+    },
+    "8f04aa5bcfa44ad7893953566464118a": {
+      "source": "bf118ba4fc384538bc9fdde3eff66b95|0819f05c4eef4c71ace90d822a990e87",
+      "desc": "",
+      "tags": {
+        "parent_tag": [],
+        "child_tag": []
+      },
+      "custom_tags": "[\"连接器\",\"线对板针座\"]",
+      "title": "XD-PHD-2*19A",
+      "version": "1736328056",
+      "type": 2
+    },
+    "0db95bcf44234520bb7e7e8e4cc9a15f": {
+      "source": "186ac4d5306845e4bcaa1e311ef5a100|0819f05c4eef4c71ace90d822a990e87",
+      "desc": "",
+      "tags": {
+        "parent_tag": [],
+        "child_tag": []
+      },
+      "custom_tags": "[\"连接器\",\"线对板针座\"]",
+      "title": "XD-PHB-2*19AW",
+      "version": "1736328032",
+      "type": 2
+    },
+    "229040c4886e493f9686e1cc8b5d3af9": {
+      "source": "272baeaa8c72428cbfa8eda0995e7276|0819f05c4eef4c71ace90d822a990e87",
+      "desc": "",
+      "tags": {
+        "parent_tag": [],
+        "child_tag": []
+      },
+      "custom_tags": "[\"连接器\",\"线对板针座\"]",
+      "title": "HC-PHB-2*19AW",
+      "version": "1732158616",
+      "type": 2
+    }
+  },
+  "footprints": {
+    "54cc6b47ad9645f0a5e4e1679d9be72b": {
+      "title": "CONN-TH_PHB-2X19AW",
+      "source": "d8d0779bf4fb4958b0895620945ed249|0819f05c4eef4c71ace90d822a990e87",
+      "version": "1629682627",
+      "type": 4,
+      "desc": ";弯插,P=2mm",
+      "tags": {
+        "parent_tag": [],
+        "child_tag": []
+      },
+      "custom_tags": "[\"CONN-TH\"]"
+    },
+    "91e37a32730347ec8a4a31f223305359": {
+      "title": "CONN-TH_XD-PHD-2X19A",
+      "source": "26174dc08f77454496e13dbf96081d70|0819f05c4eef4c71ace90d822a990e87",
+      "version": "1729074260",
+      "type": 4,
+      "desc": "",
+      "tags": {
+        "parent_tag": [],
+        "child_tag": []
+      },
+      "custom_tags": "[\"CONN-TH\"]"
+    },
+    "24d54650b6dd453fac4ce8e1b210f647": {
+      "title": "CONN-TH_38P-P2.00-R2-C19-S2.000-H",
+      "source": "6bf2ffc1583d4171952b245acc548d09|0819f05c4eef4c71ace90d822a990e87",
+      "version": "1694434124",
+      "type": 4,
+      "desc": ";弯插,P=2mm;插件,P=2mm",
+      "tags": {
+        "parent_tag": [],
+        "child_tag": []
+      },
+      "custom_tags": "[\"CONN-TH\"]"
+    }
+  },
+  "devices": {
+    "970d8b999303413e955bd29ad6ad5c31": {
+      "title": "Drawing-Symbol_A4",
+      "attributes": {
+        "Company": "嘉立创EDA",
+        "Drawed": "",
+        "Reviewed": "",
+        "Part Number": "",
+        "Version": "V1.0",
+        "Page Size": "A4",
+        "@Project Name": "",
+        "@Page Count": "",
+        "@Update Date": "",
+        "@Create Date": "",
+        "@Schematic Name": "",
+        "@Page No": "",
+        "@Page Name": "",
+        "Name": "",
+        "@Create Time": "",
+        "@Update Time": "",
+        "Border": "1",
+        "Width": "1170",
+        "Height": "825",
+        "Region Start": "1",
+        "X Region Count": "6",
+        "Y Region Count": "4",
+        "Blade Width": "10",
+        "Color": "",
+        "Title Block Position": "3",
+        "Title Block": "1",
+        "@Board Name": "",
+        "Symbol": "a55928edb27f4001924aea767dc7fc1d",
+        "Footprint": "",
+        "Description": ""
+      },
+      "description": "",
+      "tags": {
+        "parent_tag": [],
+        "child_tag": []
+      },
+      "images": [
+        ""
+      ],
+      "source": "bc676184ec9748d7b372ad543982403a|0819f05c4eef4c71ace90d822a990e87",
+      "version": "1734002032",
+      "custom_tags": "[\"特殊器件\",\"\"]"
+    },
+    "846584ce0b7643c982ada915debc16c6": {
+      "title": "PHB-2*19AW",
+      "attributes": {
+        "LCSC Part Name": "2x19P 间距:2mm 弯插 系列:PHB",
+        "Supplier Part": "C2829796",
+        "Manufacturer": "FG(富港)",
+        "Manufacturer Part": "PHB-2*19AW",
+        "Supplier Footprint": "弯插,P=2mm",
+        "JLCPCB Part Class": "扩展库",
+        "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20210425/C2829788_89FE665854D677F282A89D26A1F0BB95.pdf",
+        "Supplier": "LCSC",
+        "Add into BOM": "yes",
+        "Convert to PCB": "yes",
+        "Symbol": "c0943961fe8a42d280d709248b74ba62",
+        "Designator": "CN?",
+        "Footprint": "54cc6b47ad9645f0a5e4e1679d9be72b",
+        "3D Model": "9b62acf077d04bfc8891f343560c9e39",
+        "3D Model Title": "CONN-TH_PHB-2X19AW",
+        "3D Model Transform": "1574.8,403.5425,0,0,0,0,0,-152.559,-118.11",
+        "Pins Structure": "2x19P",
+        "Pitch": "2mm",
+        "Mounting Style": "弯插",
+        "Reference Series": "PHB",
+        "Number of Pins": "38P",
+        "Number of Rows": "2",
+        "Number of PINs Per Row": "19",
+        "Current Rating (Max)": "3A",
+        "Contact Material": "黄铜",
+        "Contact Plating": "锡",
+        "Operating Temperature Range": "-25℃~+85℃",
+        "Rated Voltage (Max)": "250V",
+        "Name": "={Manufacturer Part}",
+        "Description": "插针结构:2x19P;间距:2mm;安装方式:弯插;参考系列:PHB;总PIN数:38P;排数:2;每排PIN数:19;额定电流:3A;触头材质:黄铜;触头镀层:锡;工作温度范围:-25℃~+85℃;"
+      },
+      "description": "插针结构:2x19P;间距:2mm;安装方式:弯插;参考系列:PHB;总PIN数:38P;排数:2;每排PIN数:19;额定电流:3A;触头材质:黄铜;触头镀层:锡;工作温度范围:-25℃~+85℃;",
+      "tags": {
+        "parent_tag": [],
+        "child_tag": []
+      },
+      "images": [
+        "https://alimg.szlcsc.com/upload/public/product/middle/20230105/6B4D7449D438CF0D865E14026CAD3C1E.jpg"
+      ],
+      "source": "f46c532d1bc148409c310b686d939d51|0819f05c4eef4c71ace90d822a990e87",
+      "version": "1654895116",
+      "custom_tags": "[\"连接器\",\"线对板针座\"]"
+    },
+    "865382f0f66d4aa7aec6a472fbc94fe9": {
+      "title": "XD-PHD-2*19A",
+      "attributes": {
+        "LCSC Part Name": "2x18P 间距:2mm 直插 系列:PHD",
+        "Supplier Part": "C17700599",
+        "Manufacturer": "XUNDA(讯答)",
+        "Manufacturer Part": "XD-PHD-2*19A",
+        "Supplier Footprint": "插件,P=2mm",
+        "JLCPCB Part Class": "扩展库",
+        "Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20231019/5815C29285375CB324BF23B51888D64D.pdf",
+        "Supplier": "LCSC",
+        "Add into BOM": "yes",
+        "Convert to PCB": "yes",
+        "Symbol": "8f04aa5bcfa44ad7893953566464118a",
+        "Designator": "CN?",
+        "Footprint": "91e37a32730347ec8a4a31f223305359",
+        "3D Model": "524d5a0a083a46f4a069314c717ca14d",
+        "3D Model Title": "CONN-TH_XD-PHD-2X19A",
+        "3D Model Transform": "1574.8,197.244,0,0,0,0,0,0,-118.11",
+        "Pins Structure": "2x18P",
+        "Pitch": "2mm",
+        "Mounting Style": "直插",
+        "Reference Series": "PHD",
+        "Number of Pins": "38P",
+        "Number of Rows": "2",
+        "Number of PINs Per Row": "19",
+        "Current Rating (Max)": "3A",
+        "Operating Temperature Range": "-25℃~+85℃",
+        "Name": "={Manufacturer Part}",
+        "Description": "插针结构:2x18P;间距:2mm;安装方式:直插;参考系列:PHD;总PIN数:38P;排数:2;每排PIN数:19;额定电流:3A;工作温度范围:-25℃~+85℃;"
+      },
+      "description": "插针结构:2x18P;间距:2mm;安装方式:直插;参考系列:PHD;总PIN数:38P;排数:2;每排PIN数:19;额定电流:3A;工作温度范围:-25℃~+85℃;",
+      "tags": {
+        "parent_tag": [],
+        "child_tag": []
+      },
+      "images": [
+        "https://alimg.szlcsc.com/upload/public/product/middle/20231025/C1A400397A049A6C3E54CDEB0759A865.jpg"
+      ],
+      "source": "e5c9d18134554c95bf7845e64c84c573|0819f05c4eef4c71ace90d822a990e87",
+      "version": "1728571202",
+      "custom_tags": "[\"连接器\",\"线对板针座\"]"
+    },
+    "d9ea4ff81d1445b4bbe702932b297d9e": {
+      "title": "XD-PHB-2*19AW",
+      "attributes": {
+        "LCSC Part Name": "2x19P 间距:2mm 弯插",
+        "Supplier Part": "C17700560",
+        "Manufacturer": "XUNDA(讯答)",
+        "Manufacturer Part": "XD-PHB-2*19AW",
+        "Supplier Footprint": "弯插,P=2mm",
+        "JLCPCB Part Class": "扩展库",
+        "Datasheet": "https://item.szlcsc.com/datasheet/XD-PHB-2*19AW/18830885.html",
+        "Supplier": "LCSC",
+        "Add into BOM": "yes",
+        "Convert to PCB": "yes",
+        "Symbol": "0db95bcf44234520bb7e7e8e4cc9a15f",
+        "Designator": "U?",
+        "Footprint": "24d54650b6dd453fac4ce8e1b210f647",
+        "3D Model": "b8b86895497d40b680be1cccd823d013",
+        "3D Model Title": "CONN-TH_38P-P2.00-R2-C19-S2.000-H",
+        "3D Model Transform": "1574.8,403.543,0,0,0,0,0,-151.575,-118.11",
+        "Pins Structure": "2x19P",
+        "Pitch": "2mm",
+        "Mounting Type": "弯插",
+        "Number of Pins": "38P",
+        "Number of Rows": "2",
+        "Number of PINs Per Row": "19",
+        "Row Spacing": "2mm",
+        "Current Rating": "3A",
+        "Operating Temperature": "-25℃~+85℃",
+        "Name": "={Manufacturer Part}",
+        "Description": "插针结构:2x19P;间距:2mm;安装方式:弯插;总PIN数:38P;排数:2;每排PIN数:19;行距:2mm;额定电流:3A;工作温度:-25℃~+85℃;"
+      },
+      "description": "插针结构:2x19P;间距:2mm;安装方式:弯插;总PIN数:38P;排数:2;每排PIN数:19;行距:2mm;额定电流:3A;工作温度:-25℃~+85℃;",
+      "tags": {
+        "parent_tag": [],
+        "child_tag": []
+      },
+      "images": [
+        "https://alimg.szlcsc.com/upload/public/product/middle/20231025/08A3CA32959198CC06F56E65B9623697.jpg"
+      ],
+      "source": "f6e2e305d2334fff8c03f9b4c65e383e|0819f05c4eef4c71ace90d822a990e87",
+      "version": "1697206804",
+      "custom_tags": "[\"连接器\",\"线对板针座\"]"
+    },
+    "1a14045829274962a0e1cf41e064e0c6": {
+      "title": "HC-PHB-2*19AW",
+      "attributes": {
+        "LCSC Part Name": "2x19P 间距:2mm 弯插",
+        "Supplier Part": "C2895003",
+        "Manufacturer": "HCTL(华灿天禄)",
+        "Manufacturer Part": "HC-PHB-2*19AW",
+        "Supplier Footprint": "弯插,P=2mm",
+        "JLCPCB Part Class": "扩展库",
+        "Datasheet": "https://item.szlcsc.com/datasheet/HC-PHB-2*19AW/3132679.html",
+        "Supplier": "LCSC",
+        "Add into BOM": "yes",
+        "Convert to PCB": "yes",
+        "Symbol": "229040c4886e493f9686e1cc8b5d3af9",
+        "Designator": "CN?",
+        "Footprint": "24d54650b6dd453fac4ce8e1b210f647",
+        "3D Model": "b8b86895497d40b680be1cccd823d013",
+        "3D Model Title": "CONN-TH_38P-P2.00-R2-C19-S2.000-H",
+        "3D Model Transform": "1574.8,403.543,0,0,0,0,0,-151.575,-118.11",
+        "Pins Structure": "2x19P",
+        "Pitch": "2mm",
+        "Mounting Type": "弯插",
+        "Reference Series": "-",
+        "Number of Pins": "38P",
+        "Number of Rows": "2",
+        "Number of PINs Per Row": "19",
+        "Row Spacing": "2mm",
+        "Current Rating": "2A",
+        "Contact Material": "黄铜",
+        "Contact Plating": "锡",
+        "Operating Temperature": "-40℃~+105℃",
+        "Voltage Rating": "250V",
+        "Plastic Material": "PA66",
+        "Flame Retardant Rating": "-",
+        "Supplementary Features": "-",
+        "Color": "-",
+        "Z-Height of the Board": "7.3mm",
+        "X-Length of Bottom Edge on Board (Spacing Line)": "40mm",
+        "Y-Width of Bottom Edge on Board": "-",
+        "Name": "={Manufacturer Part}",
+        "Description": "插针结构:2x19P;间距:2mm;安装方式:弯插;参考系列:-;总PIN数:38P;排数:2;每排PIN数:19;行距:2mm;额定电流:2A;触头材质:黄铜;触头镀层:锡;工作温度:-40℃~+105℃;"
+      },
+      "description": "插针结构:2x19P;间距:2mm;安装方式:弯插;参考系列:-;总PIN数:38P;排数:2;每排PIN数:19;行距:2mm;额定电流:2A;触头材质:黄铜;触头镀层:锡;工作温度:-40℃~+105℃;",
+      "tags": {
+        "parent_tag": [],
+        "child_tag": []
+      },
+      "images": [
+        "https://alimg.szlcsc.com/upload/public/product/middle/20230107/26B1B34E52AE6741E2FC06157E8BD6FA.jpg"
+      ],
+      "source": "d02acb5a37a5494ab90a29af5b4ed6c7|0819f05c4eef4c71ace90d822a990e87",
+      "version": "1654895191",
+      "custom_tags": "[\"连接器\",\"线对板针座\"]"
+    }
+  },
+  "boards": {
+    "Board1": {
+      "schematic": "d6bb1abd73b84629b95d4f8a5221eb13",
+      "pcb": "75f54b3064d04136a00632928453322e"
+    }
+  },
+  "config": {
+    "title": "f401转接板",
+    "cbbProject": 0,
+    "defaultSheet": "970d8b999303413e955bd29ad6ad5c31",
+    "editorVersion": "2.2.43.4"
+  }
+}
