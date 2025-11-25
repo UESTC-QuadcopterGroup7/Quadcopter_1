@@ -652,59 +652,197 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>USER</GroupName>
+          <GroupName>USER/Motor</GroupName>
           <Files>
             <File>
-              <FileName>MyHMC5883L.c</FileName>
+              <FileName>MyDShot.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\USER\MyHMC5883L.c</FilePath>
+              <FilePath>..\USER\Motor\MyDShot.c</FilePath>
             </File>
             <File>
-              <FileName>MyHMC5883L.h</FileName>
+              <FileName>MyDShot.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\USER\MyHMC5883L.h</FilePath>
+              <FilePath>..\USER\Motor\MyDShot.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyDShot_DMA.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\Motor\MyDShot_DMA.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyDShot_DMA.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\Motor\MyDShot_DMA.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyMotorMixer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\Motor\MyMotorMixer.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyMotorMixer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\Motor\MyMotorMixer.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>USER/Core</GroupName>
+          <Files>
+            <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\Core\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>Mysystem_clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\Core\Mysystem_clock.c</FilePath>
+            </File>
+            <File>
+              <FileName>Mysystem_clock.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\Core\Mysystem_clock.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>USER/Sensor</GroupName>
+          <Files>
+            <File>
+              <FileName>MPU6050.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\Sensors\MPU6050.h</FilePath>
             </File>
             <File>
               <FileName>MyBMP.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\USER\MyBMP.c</FilePath>
+              <FilePath>..\USER\Sensors\MyBMP.c</FilePath>
             </File>
             <File>
               <FileName>MyBMP.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\USER\MyBMP.h</FilePath>
+              <FilePath>..\USER\Sensors\MyBMP.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyHMC5883L.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\Sensors\MyHMC5883L.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyHMC5883L.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\Sensors\MyHMC5883L.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyMPU6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\Sensors\MyMPU6050.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyMPU6050.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\Sensors\MyMPU6050.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyMS5611.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\Sensors\MyMS5611.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyMS5611.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\Sensors\MyMS5611.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>USER/Drivers</GroupName>
+          <Files>
+            <File>
+              <FileName>Delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\Drivers\Delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>Delay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\Drivers\Delay.h</FilePath>
             </File>
             <File>
               <FileName>MyDMA.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\USER\MyDMA.c</FilePath>
+              <FilePath>..\USER\Drivers\MyDMA.c</FilePath>
             </File>
             <File>
               <FileName>MyDMA.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\USER\MyDMA.h</FilePath>
+              <FilePath>..\USER\Drivers\MyDMA.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyI2C.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\Drivers\MyI2C.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyI2C.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\Drivers\MyI2C.h</FilePath>
             </File>
             <File>
               <FileName>MyI2S.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\USER\MyI2S.c</FilePath>
+              <FilePath>..\USER\Drivers\MyI2S.c</FilePath>
             </File>
             <File>
               <FileName>MyI2S.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\USER\MyI2S.h</FilePath>
+              <FilePath>..\USER\Drivers\MyI2S.h</FilePath>
             </File>
+            <File>
+              <FileName>MyUSART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\Drivers\MyUSART.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyUSART.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\Drivers\MyUSART.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>USER/RC</GroupName>
+          <Files>
+            <File>
+              <FileName>MySBUS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\RC\MySBUS.c</FilePath>
+            </File>
+            <File>
+              <FileName>MySBUS.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\RC\MySBUS.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>USER/Wireless</GroupName>
+          <Files>
             <File>
               <FileName>MyHC05.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\USER\MyHC05.c</FilePath>
+              <FilePath>..\USER\Wireless\MyHC05.c</FilePath>
             </File>
             <File>
               <FileName>MyHC05.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\USER\MyHC05.h</FilePath>
+              <FilePath>..\USER\Wireless\MyHC05.h</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>USER/Control</GroupName>
         </Group>
       </Groups>
     </Target>

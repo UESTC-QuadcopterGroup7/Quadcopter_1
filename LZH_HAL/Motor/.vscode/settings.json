@@ -16,6 +16,8 @@
         "main.h": "c",
         "compare": "c",
         "cstddef": "c",
-        "stm32f4xx_hal_def.h": "c"
+        "stm32f4xx_hal_def.h": "c",
+        "string.h": "c",
+        "math.h": "c"
     }
 }
