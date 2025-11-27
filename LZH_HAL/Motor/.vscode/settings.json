@@ -18,6 +18,8 @@
         "cstddef": "c",
         "stm32f4xx_hal_def.h": "c",
         "string.h": "c",
-        "math.h": "c"
+        "math.h": "c",
+        "iosfwd": "c",
+        "*.rh": "c"
     }
 }
