@@ -2,6 +2,7 @@
 #define __MY_MOTOR_MIXER_H
 
 #include <stdint.h>
+#include <stddef.h>
 
 #define MOTOR_MIXER_MOTOR_COUNT 4
 #define MOTOR_MIXER_OUTPUT_MIN 0.0f

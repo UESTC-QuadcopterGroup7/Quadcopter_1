@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F401xx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\DRIVER\CMSIS;..\USER;..\DRIVER\FWLib;..\DRIVER\FWLib\inc</IncludePath>
+              <IncludePath>..\DRIVER\CMSIS;..\USER\Core;..\DRIVER\FWLib;..\DRIVER\FWLib\inc;..\USER\Control;..\USER\Drivers;..\USER\Motor;..\USER\Wireless;..\USER\Sensors;..\USER\RC</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -823,6 +823,16 @@
               <FileName>MySBUS.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\USER\RC\MySBUS.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyPPM_temp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\RC\MyPPM_temp.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyPPM_temp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\RC\MyPPM_temp.h</FilePath>
             </File>
           </Files>
         </Group>

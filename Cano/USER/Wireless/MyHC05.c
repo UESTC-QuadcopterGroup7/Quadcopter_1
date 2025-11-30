@@ -1,50 +1,46 @@
 #include "MyHC05.h"
-#include "stm32f4xx_gpio.h"
 #include "stm32f4xx_rcc.h"
-#include "string.h"
-#include "stdio.h"
+#include "stm32f4xx_gpio.h"
+#include "stm32f4xx_usart.h"
+
+/* ===============================
+   内部变量（不在头文件暴露）
+   =============================== */
 
 volatile uint8_t HC05_RxBuffer[100];
-volatile uint8_t HC05_RxIndex = 0;
 volatile uint8_t HC05_RxFlag = 0;
 
-// 内部函数声明
-static void HC05_GPIO_Config(void);
-static void HC05_USART_Config(uint32_t baudrate);
-static void Delay(__IO uint32_t nCount);
+static volatile uint8_t rxIndex = 0;
 
-void HC05_Init(uint32_t baudrate)
-{
-    HC05_GPIO_Config();
-    HC05_USART_Config(baudrate);
-}
+/* ===============================
+   内部函数（仅在本文件使用）
+   =============================== */
 
+// GPIO: PA2 = TX, PA3 = RX, PA1 = EN
 static void HC05_GPIO_Config(void)
 {
     GPIO_InitTypeDef gpio;
 
     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
 
-    // PA2 = TX, PA3 = RX
+    // PA2 / PA3 复用 USART2
     gpio.GPIO_Pin = GPIO_Pin_2 | GPIO_Pin_3;
     gpio.GPIO_Mode = GPIO_Mode_AF;
     gpio.GPIO_Speed = GPIO_Speed_50MHz;
-    gpio.GPIO_PuPd = GPIO_PuPd_UP;
     gpio.GPIO_OType = GPIO_OType_PP;
+    gpio.GPIO_PuPd = GPIO_PuPd_UP;
     GPIO_Init(GPIOA, &gpio);
 
     GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_USART2);
     GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_USART2);
 
-    // PA1 = EN 引脚
+    // PA1 = EN
     gpio.GPIO_Pin = GPIO_Pin_1;
     gpio.GPIO_Mode = GPIO_Mode_OUT;
-    gpio.GPIO_Speed = GPIO_Speed_50MHz;
     gpio.GPIO_PuPd = GPIO_PuPd_NOPULL;
-    gpio.GPIO_OType = GPIO_OType_PP;
     GPIO_Init(GPIOA, &gpio);
 
-    GPIO_ResetBits(GPIOA, GPIO_Pin_1);
+    GPIO_ResetBits(GPIOA, GPIO_Pin_1);  // 默认关闭 AT 模式
 }
 
 static void HC05_USART_Config(uint32_t baudrate)
@@ -63,13 +59,23 @@ static void HC05_USART_Config(uint32_t baudrate)
     USART_Init(USART2, &us);
 
     USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);
+
     USART_Cmd(USART2, ENABLE);
 }
 
-void HC05_SendString(char *str)
+static void Delay(volatile uint32_t n)
 {
-    while (*str)
-        HC05_SendByte(*str++);
+    while(n--) __NOP();
+}
+
+/* ===============================
+   对外 API 实现（与 HC05.h 匹配）
+   =============================== */
+
+void HC05_Init(uint32_t baudrate)
+{
+    HC05_GPIO_Config();
+    HC05_USART_Config(baudrate);
 }
 
 void HC05_SendByte(uint8_t data)
@@ -78,78 +84,62 @@ void HC05_SendByte(uint8_t data)
     USART_SendData(USART2, data);
 }
 
+void HC05_SendString(const char *str)
+{
+    while (*str)
+        HC05_SendByte(*str++);
+}
+
 void HC05_ChangeBaudRate(uint32_t baudrate)
 {
     USART_Cmd(USART2, DISABLE);
-
     HC05_USART_Config(baudrate);
-
     USART_Cmd(USART2, ENABLE);
 }
 
 void HC05_SimpleInit(void)
 {
-    HC05_SendString("HC05 Simple Init...\r\n");
-
-    HC05_ChangeBaudRate(9600);
-    Delay(500000);
-
-    GPIO_SetBits(GPIOA, GPIO_Pin_1);  // EN = HIGH
-    Delay(2000000);
+    GPIO_SetBits(GPIOA, GPIO_Pin_1);  // EN = HIGH → 进入AT模式
+    Delay(200000);
 
     HC05_ChangeBaudRate(38400);
-    Delay(1000000);
+    Delay(200000);
 
     HC05_SendString("AT\r\n");
-    Delay(500000);
+    Delay(50000);
 
     HC05_SendString("AT+NAME=STM32_BT\r\n");
-    Delay(500000);
+    Delay(50000);
 
-    HC05_SendString("AT+PSWD=4321\r\n");
-    Delay(500000);
+    HC05_SendString("AT+PSWD=1234\r\n");
+    Delay(50000);
 
-    HC05_SendString("AT+UART=9600,0,0\r\n");
-    Delay(500000);
-
-    HC05_SendString("AT+ROLE=0\r\n");
-    Delay(500000);
-
-    HC05_SendString("HC05 Config Done\r\n");
-
-    GPIO_ResetBits(GPIOA, GPIO_Pin_1);
-    Delay(1000000);
+    GPIO_ResetBits(GPIOA, GPIO_Pin_1);  // 退出 AT 模式
+    Delay(200000);
 
     HC05_ChangeBaudRate(9600);
 }
 
-static void Delay(__IO uint32_t n)
+void HC05_UART_IRQHandler(void)
 {
-    while(n--) __NOP();
-}
-
-// ============ 中断回调（与主工程兼容） ============
-
-void USART2_IRQHandler(void)
-{
-    if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
+    if (USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
     {
-        USART_ClearITPendingBit(USART2, USART_IT_RXNE);
         uint8_t d = USART_ReceiveData(USART2);
 
-        if (HC05_RxIndex < sizeof(HC05_RxBuffer) - 1)
+        if (rxIndex < sizeof(HC05_RxBuffer) - 1)
         {
-            HC05_RxBuffer[HC05_RxIndex++] = d;
+            HC05_RxBuffer[rxIndex++] = d;
 
             if (d == '\n')
             {
-                HC05_RxBuffer[HC05_RxIndex] = '\0';
+                HC05_RxBuffer[rxIndex] = '\0';
                 HC05_RxFlag = 1;
+                rxIndex = 0;
             }
         }
         else
         {
-            HC05_RxIndex = 0;
+            rxIndex = 0;
             HC05_RxFlag = 1;
         }
     }

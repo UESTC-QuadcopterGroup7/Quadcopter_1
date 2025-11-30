@@ -44,12 +44,12 @@ static void SBUS_GPIO_Init(void)
     gpio.GPIO_PuPd  = GPIO_PuPd_UP;
     GPIO_Init(GPIOB, &gpio);
 
-    GPIO_PinAFConfig(GPIOB, GPIO_PinSource11, GPIO_AF_USART3);
+    GPIO_PinAFConfig(GPIOB, GPIO_PinSource11, GPIO_AF_USART2);
 }
 
 static void SBUS_USART_Init(void)
 {
-    RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
 
     USART_InitTypeDef usart;
     USART_StructInit(&usart);
@@ -59,18 +59,18 @@ static void SBUS_USART_Init(void)
     usart.USART_Parity              = USART_Parity_Even;
     usart.USART_Mode                = USART_Mode_Rx;
     usart.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-    USART_Init(USART3, &usart);
+    USART_Init(USART2, &usart);
 
     USART_ITConfig(USART3, USART_IT_RXNE, ENABLE);
 
     NVIC_InitTypeDef nvic;
-    nvic.NVIC_IRQChannel = USART3_IRQn;
+    nvic.NVIC_IRQChannel = USART2_IRQn;
     nvic.NVIC_IRQChannelPreemptionPriority = 1;
     nvic.NVIC_IRQChannelSubPriority = 1;
     nvic.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&nvic);
 
-    USART_Cmd(USART3, ENABLE);
+    USART_Cmd(USART2, ENABLE);
 }
 
 void SBUS_Init(void)
@@ -89,9 +89,9 @@ const SBUS_Data_t *SBUS_GetData(void)
 
 void USART3_IRQHandler(void)
 {
-    if (USART_GetITStatus(USART3, USART_IT_RXNE) != RESET)
+    if (USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
     {
-        uint8_t byte = (uint8_t)USART_ReceiveData(USART3);
+        uint8_t byte = (uint8_t)USART_ReceiveData(USART2);
 
         if (sbusIndex == 0)
         {

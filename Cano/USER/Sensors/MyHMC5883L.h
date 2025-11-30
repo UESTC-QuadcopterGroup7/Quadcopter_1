@@ -15,6 +15,7 @@ extern "C" {
 #include "stm32f4xx.h"
 #include "MyI2C.h"
 #include "MyMPU6050.h"
+#include <stddef.h>
 
 #define HMC5883L_CONFIG_A      0x00
 #define HMC5883L_CONFIG_B      0x01
