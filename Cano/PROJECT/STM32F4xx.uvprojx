@@ -670,11 +670,6 @@
               <FilePath>..\USER\Motor\MyDShot_DMA.c</FilePath>
             </File>
             <File>
-              <FileName>MyDShot_DMA.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\USER\Motor\MyDShot_DMA.h</FilePath>
-            </File>
-            <File>
               <FileName>MyMotorMixer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\USER\Motor\MyMotorMixer.c</FilePath>
@@ -683,6 +678,26 @@
               <FileName>MyMotorMixer.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\USER\Motor\MyMotorMixer.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyOneShot.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\Motor\MyOneShot.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyOneShot.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\Motor\MyOneShot.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyPWM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\Motor\MyPWM.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyPWM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\Motor\MyPWM.h</FilePath>
             </File>
           </Files>
         </Group>
