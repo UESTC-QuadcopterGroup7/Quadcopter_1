@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F401xx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\DRIVER\CMSIS;..\USER;..\DRIVER\FWLib;..\DRIVER\FWLib\inc</IncludePath>
+              <IncludePath>..\DRIVER\CMSIS;..\USER\Core;..\DRIVER\FWLib;..\DRIVER\FWLib\inc;..\USER\Control;..\USER\Drivers;..\USER\Motor;..\USER\Wireless;..\USER\Sensors;..\USER\RC</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -670,11 +670,6 @@
               <FilePath>..\USER\Motor\MyDShot_DMA.c</FilePath>
             </File>
             <File>
-              <FileName>MyDShot_DMA.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\USER\Motor\MyDShot_DMA.h</FilePath>
-            </File>
-            <File>
               <FileName>MyMotorMixer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\USER\Motor\MyMotorMixer.c</FilePath>
@@ -683,6 +678,26 @@
               <FileName>MyMotorMixer.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\USER\Motor\MyMotorMixer.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyOneShot.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\Motor\MyOneShot.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyOneShot.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\Motor\MyOneShot.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyPWM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\Motor\MyPWM.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyPWM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\Motor\MyPWM.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -823,6 +838,16 @@
               <FileName>MySBUS.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\USER\RC\MySBUS.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyPPM_temp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\RC\MyPPM_temp.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyPPM_temp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\RC\MyPPM_temp.h</FilePath>
             </File>
           </Files>
         </Group>
