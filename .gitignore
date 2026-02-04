@@ -57,3 +57,4 @@ dkms.conf
 # related to keil
 **/Listings/
 **/Objects/
+**/EIDE/
